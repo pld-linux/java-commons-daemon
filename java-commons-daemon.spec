@@ -1,3 +1,7 @@
+#
+# TODO:
+#		- update to 1.0.
+#
 Summary:	Jakarta Commons Daemon - controlling of Java daemons
 Summary(pl):	Jakarta Commons Daemon - kontrolowanie demonów w Javie
 Name:		jakarta-commons-daemon
@@ -17,8 +21,6 @@ Requires:	jre >= 1.2
 Requires:	jakarta-commons-collections >= 2.0
 Requires:	jakarta-commons-logging >= 1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_javalibdir	/usr/share/java
 
 %description
 The Daemon Component contains a set of Java and native code,
@@ -52,22 +54,23 @@ Dokumentacja do Jakarta Commons Daemon.
 touch LICENSE
 mkdir srcdir
 cat > build.properties << EOF
-junit.home = %{_javalibdir}
+junit.home = %{_javadir}
 junit.jar = \${junit.home}
 EOF
 ant dist
 
 # native part
 cd src/native/unix
+cp -f /usr/share/automake/config.sub support
 %configure \
 	--with-java=/usr/lib/java
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_javalibdir},%{_bindir}}
+install -d $RPM_BUILD_ROOT{%{_javadir},%{_bindir}}
 
-install dist/*.jar $RPM_BUILD_ROOT%{_javalibdir}
+install dist/*.jar $RPM_BUILD_ROOT%{_javadir}
 
 install dist/jsvc $RPM_BUILD_ROOT%{_bindir}
 
@@ -78,7 +81,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc dist/LICENSE
 %attr(755,root,root) %{_bindir}/jsvc
-%{_javalibdir}/*.jar
+%{_javadir}/*.jar
 
 %files doc
 %defattr(644,root,root,755)
