@@ -63,7 +63,7 @@ ant dist
 cd src/native/unix
 cp -f /usr/share/automake/config.sub support
 %configure \
-	--with-java=/usr/lib/java
+	--with-java=%{_libdir}/java
 %{__make}
 
 %install
