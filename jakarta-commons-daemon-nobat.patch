@@ -1,0 +1,15 @@
+--- commons-daemon-src/build.xml.orig	Thu Jul 11 23:37:40 2002
++++ commons-daemon-src/build.xml	Wed Mar 26 03:14:22 2003
+@@ -227,11 +227,7 @@
+     <copy     todir="${dist.home}/lib" filtering="off">
+       <fileset dir="${ant.home}/lib" includes="*.jar"/>
+     </copy>
+-    <fixcrlf srcdir="${ant.home}/bin"
+-           includes="antRun.bat"
+-            destdir="${dist.home}/bin"
+-                eol="crlf"/>
+-    <fixcrlf srcdir="${ant.home}/bin"
++    <fixcrlf srcdir="/usr/bin"
+            includes="antRun"
+             destdir="${dist.home}/bin"
+                 eol="lf"/>
