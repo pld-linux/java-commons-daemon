@@ -6,6 +6,7 @@ Release:	1
 License:	Apache
 Group:		Development/Languages/Java
 Source0:	http://jakarta.apache.org/~jfclere/commons-daemon/commons-daemon-src.tar.gz
+# Source0-md5:	01aad1d93e62c019e666d9d088a1560d
 Patch0:		%{name}-nobat.patch
 URL:		http://jakarta.apache.org/
 BuildRequires:	automake
