@@ -1,18 +1,13 @@
-#
-# TODO:
-#		- update to 1.0.
-#
 Summary:	Jakarta Commons Daemon - controlling of Java daemons
 Summary(pl):	Jakarta Commons Daemon - kontrolowanie demonów w Javie
 Name:		jakarta-commons-daemon
-Version:	0.1
+Version:	1.0
 Release:	1
 License:	Apache
 Group:		Development/Languages/Java
-Source0:	http://jakarta.apache.org/~jfclere/commons-daemon/commons-daemon-src.tar.gz
-# Source0-md5:	01aad1d93e62c019e666d9d088a1560d
-Patch0:		%{name}-nobat.patch
-URL:		http://jakarta.apache.org/
+Source0:	http://www.apache.org/dist/jakarta/commons/daemon/source/daemon-%{version}.tar.gz
+# Source0-md5:	3054786aaba9631ec04fef0862023bc8
+URL:		http://jakarta.apache.org/commons/daemon/
 BuildRequires:	automake
 BuildRequires:	jakarta-ant >= 1.4.1
 BuildRequires:	jdk >= 1.2
@@ -46,13 +41,10 @@ Jakarta Commons Daemon documentation.
 Dokumentacja do Jakarta Commons Daemon.
 
 %prep
-%setup -q -n commons-daemon-src
-%patch -p1
+%setup -q -n daemon-%{version}
 
 %build
 # Java part
-touch LICENSE
-mkdir srcdir
 cat > build.properties << EOF
 junit.home = %{_javadir}
 junit.jar = \${junit.home}
@@ -72,7 +64,7 @@ install -d $RPM_BUILD_ROOT{%{_javadir},%{_bindir}}
 
 install dist/*.jar $RPM_BUILD_ROOT%{_javadir}
 
-install dist/jsvc $RPM_BUILD_ROOT%{_bindir}
+install src/native/unix/jsvc $RPM_BUILD_ROOT%{_bindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
