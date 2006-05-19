@@ -9,7 +9,7 @@ Source0:	http://www.apache.org/dist/jakarta/commons/daemon/source/daemon-%{versi
 # Source0-md5:	df3eb5aafa53ca530843a09d40b8a1c0
 URL:		http://jakarta.apache.org/commons/daemon/
 BuildRequires:	automake
-BuildRequires:	jakarta-ant >= 1.4.1
+BuildRequires:	ant >= 1.4.1
 BuildRequires:	jdk >= 1.2
 BuildRequires:	junit >= 3.7
 Requires:	jre >= 1.2
