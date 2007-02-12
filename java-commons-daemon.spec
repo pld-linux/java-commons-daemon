@@ -1,5 +1,5 @@
 Summary:	Jakarta Commons Daemon - controlling of Java daemons
-Summary(pl):	Jakarta Commons Daemon - kontrolowanie demonów w Javie
+Summary(pl.UTF-8):   Jakarta Commons Daemon - kontrolowanie demonÃ³w w Javie
 Name:		jakarta-commons-daemon
 Version:	1.0.1
 Release:	1
@@ -23,21 +23,21 @@ including a set of Java interfaces applications must implement and
 Unix native code to control a Java daemon from a Unix operating
 system.
 
-%description -l pl
-Komponent Daemon zawiera zbiór kodu w Javie i natywnego,
-zawieraj±cego zbiór interfejsów w Javie, które musz± byæ
-zaimplementowane w aplikacjach oraz natywny kod uniksowy kontroluj±cy
+%description -l pl.UTF-8
+Komponent Daemon zawiera zbiÃ³r kodu w Javie i natywnego,
+zawierajÄ…cego zbiÃ³r interfejsÃ³w w Javie, ktÃ³re muszÄ… byÄ‡
+zaimplementowane w aplikacjach oraz natywny kod uniksowy kontrolujÄ…cy
 demony w Javie w systemie Unix.
 
 %package doc
 Summary:	Jakarta Commons Daemon documentation
-Summary(pl):	Dokumentacja do Jakarta Commons Daemon
+Summary(pl.UTF-8):   Dokumentacja do Jakarta Commons Daemon
 Group:		Development/Languages/Java
 
 %description doc
 Jakarta Commons Daemon documentation.
 
-%description doc -l pl
+%description doc -l pl.UTF-8
 Dokumentacja do Jakarta Commons Daemon.
 
 %prep
