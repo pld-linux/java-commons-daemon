@@ -1,5 +1,5 @@
 Summary:	Jakarta Commons Daemon - controlling of Java daemons
-Summary(pl.UTF-8):   Jakarta Commons Daemon - kontrolowanie demonów w Javie
+Summary(pl.UTF-8):	Jakarta Commons Daemon - kontrolowanie demonów w Javie
 Name:		jakarta-commons-daemon
 Version:	1.0.1
 Release:	1
@@ -31,7 +31,7 @@ demony w Javie w systemie Unix.
 
 %package doc
 Summary:	Jakarta Commons Daemon documentation
-Summary(pl.UTF-8):   Dokumentacja do Jakarta Commons Daemon
+Summary(pl.UTF-8):	Dokumentacja do Jakarta Commons Daemon
 Group:		Development/Languages/Java
 
 %description doc
