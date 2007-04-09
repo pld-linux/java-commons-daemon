@@ -33,7 +33,7 @@ systemie Unix.
 %package javadoc
 Summary:	Jakarta Commons Daemon documentation
 Summary(pl.UTF-8):	Dokumentacja do Jakarta Commons Daemon
-Group:		Development/Languages/Java
+Group:		Documentation
 Obsoletes:	jakarta-commons-daemon-doc
 
 %description javadoc
