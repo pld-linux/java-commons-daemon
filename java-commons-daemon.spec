@@ -10,6 +10,7 @@ Source0:	http://www.apache.org/dist/jakarta/commons/daemon/source/daemon-%{versi
 URL:		http://jakarta.apache.org/commons/daemon/
 BuildRequires:	ant >= 1.4.1
 BuildRequires:	automake
+BuildRequires:	jamvm-devel
 BuildRequires:	jdk >= 1.2
 BuildRequires:	jpackage-utils
 BuildRequires:	junit >= 3.7
