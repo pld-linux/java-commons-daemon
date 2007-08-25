@@ -7,10 +7,10 @@ License:	Apache
 Group:		Development/Languages/Java
 Source0:	http://www.apache.org/dist/jakarta/commons/daemon/source/daemon-%{version}.tar.gz
 # Source0-md5:	df3eb5aafa53ca530843a09d40b8a1c0
+Patch0:		%{name}-link.patch
 URL:		http://jakarta.apache.org/commons/daemon/
 BuildRequires:	ant >= 1.4.1
 BuildRequires:	automake
-BuildRequires:	jamvm-devel
 BuildRequires:	jdk >= 1.2
 BuildRequires:	jpackage-utils
 BuildRequires:	junit >= 3.7
@@ -45,6 +45,7 @@ Dokumentacja do Jakarta Commons Daemon.
 
 %prep
 %setup -q -n daemon-%{version}
+%patch0 -p1
 
 %build
 # Java part
