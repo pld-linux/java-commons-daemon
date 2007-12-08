@@ -1,3 +1,5 @@
+# TODO
+# - rename to apache-commons-daemon?
 %include	/usr/lib/rpm/macros.java
 Summary:	Jakarta Commons Daemon - controlling of Java daemons
 Summary(pl.UTF-8):	Jakarta Commons Daemon - kontrolowanie demonów w Javie
@@ -66,11 +68,10 @@ cp -f /usr/share/automake/config.sub support
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_javadir}
-for a in dist/*.jar; do
-	jar=${a##*/}
-	cp -a dist/$jar $RPM_BUILD_ROOT%{_javadir}/${jar%%.jar}-%{version}.jar
-	ln -s ${jar%%.jar}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/$jar
-done
+
+# jars
+cp -a dist/commons-daemon.jar $RPM_BUILD_ROOT%{_javadir}/commons-daemon-%{version}.jar
+ln -s commons-daemon-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/commons-daemon.jar
 
 # javadoc
 install -d $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
