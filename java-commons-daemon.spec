@@ -5,7 +5,7 @@ Summary:	Jakarta Commons Daemon - controlling of Java daemons
 Summary(pl.UTF-8):	Jakarta Commons Daemon - kontrolowanie demonów w Javie
 Name:		jakarta-commons-daemon
 Version:	1.0.1
-Release:	2
+Release:	3
 License:	Apache License 2.0
 Group:		Development/Languages/Java
 Source0:	http://www.apache.org/dist/jakarta/commons/daemon/source/daemon-%{version}.tar.gz
@@ -19,6 +19,7 @@ BuildRequires:	jpackage-utils
 BuildRequires:	junit >= 3.7
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
+BuildRequires:	xmlto >= 0:0.0.18-1
 Requires:	jakarta-commons-collections >= 2.0
 Requires:	jakarta-commons-logging >= 1.0
 Requires:	jre >= 1.2
@@ -64,6 +65,7 @@ cp -f /usr/share/automake/config.sub support
 %configure \
 	--with-java=%{java_home}
 %{__make}
+refentry2man < man/jsvc.1.xml > man/jsvc.1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -78,8 +80,9 @@ install -d $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
 cp -a dist/docs/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
 ln -s %{name}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{name} # ghost symlink
 
-install -d $RPM_BUILD_ROOT%{_bindir}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 install src/native/unix/jsvc $RPM_BUILD_ROOT%{_bindir}
+cp -a src/native/unix/man/jsvc.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -91,6 +94,7 @@ ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
 %defattr(644,root,root,755)
 %doc dist/LICENSE
 %attr(755,root,root) %{_bindir}/jsvc
+%{_mandir}/man1/jsvc.1*
 %{_javadir}/*.jar
 
 %files javadoc
