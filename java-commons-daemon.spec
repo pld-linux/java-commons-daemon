@@ -6,7 +6,7 @@ Summary(pl.UTF-8):	Jakarta Commons Daemon - kontrolowanie demonów w Javie
 Name:		jakarta-commons-daemon
 Version:	1.0.1
 Release:	4
-License:	Apache License 2.0
+License:	Apache v2.0
 Group:		Development/Languages/Java
 Source0:	http://www.apache.org/dist/jakarta/commons/daemon/source/daemon-%{version}.tar.gz
 # Source0-md5:	df3eb5aafa53ca530843a09d40b8a1c0
