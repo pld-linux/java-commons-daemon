@@ -1,16 +1,17 @@
-# TODO
-# - rename to apache-commons-daemon?
+# Conditional build:
+%bcond_without	javadoc		# don't build javadoc
+
 %include	/usr/lib/rpm/macros.java
 Summary:	Jakarta Commons Daemon - controlling of Java daemons
 Summary(pl.UTF-8):	Jakarta Commons Daemon - kontrolowanie demonów w Javie
-Name:		jakarta-commons-daemon
+Name:		java-commons-daemon
 Version:	1.0.1
 Release:	4
 License:	Apache v2.0
-Group:		Development/Languages/Java
+Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/jakarta/commons/daemon/source/daemon-%{version}.tar.gz
 # Source0-md5:	df3eb5aafa53ca530843a09d40b8a1c0
-Patch0:		%{name}-link.patch
+Patch0:		jakarta-commons-daemon-link.patch
 URL:		http://commons.apache.org/daemon/
 BuildRequires:	ant >= 1.4.1
 BuildRequires:	automake
@@ -22,7 +23,10 @@ BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	xmlto >= 0:0.0.18-1
 Requires:	jakarta-commons-collections >= 2.0
 Requires:	jakarta-commons-logging >= 1.0
+Requires:	jpackage-utils
 Requires:	jre >= 1.2
+Provides:	jakarta-commons-daemon
+Obsoletes:	jakarta-commons-daemon
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -50,7 +54,8 @@ Jakarta Commons Daemon documentation.
 Dokumentacja do Jakarta Commons Daemon.
 
 %prep
-%setup -q -n daemon-%{version}
+%setup -qc
+mv daemon-%{version}/* .
 %patch0 -p1
 
 %build
@@ -76,9 +81,11 @@ cp -a dist/commons-daemon.jar $RPM_BUILD_ROOT%{_javadir}/commons-daemon-%{versio
 ln -s commons-daemon-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/commons-daemon.jar
 
 # javadoc
+%if %{with javadoc}
 install -d $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
 cp -a dist/docs/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
 ln -s %{name}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{name} # ghost symlink
+%endif
 
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 install src/native/unix/jsvc $RPM_BUILD_ROOT%{_bindir}
@@ -97,7 +104,9 @@ ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
 %{_mandir}/man1/jsvc.1*
 %{_javadir}/*.jar
 
+%if %{with javadoc}
 %files javadoc
 %defattr(644,root,root,755)
 %{_javadocdir}/%{name}-%{version}
 %ghost %{_javadocdir}/%{name}
+%endif
