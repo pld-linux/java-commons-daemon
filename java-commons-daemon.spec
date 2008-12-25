@@ -21,8 +21,8 @@ BuildRequires:	junit >= 3.7
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	xmlto >= 0:0.0.18-1
-Requires:	jakarta-commons-collections >= 2.0
-Requires:	jakarta-commons-logging >= 1.0
+Requires:	java-commons-collections >= 2.0
+Requires:	java-commons-logging >= 1.0
 Requires:	jpackage-utils
 Requires:	jre >= 1.2
 Provides:	jakarta-commons-daemon
@@ -45,7 +45,9 @@ Summary:	Jakarta Commons Daemon documentation
 Summary(pl.UTF-8):	Dokumentacja do Jakarta Commons Daemon
 Group:		Documentation
 Requires:	jpackage-utils
+Provides:	jakarta-commons-daemon-javadoc
 Obsoletes:	jakarta-commons-daemon-doc
+Obsoletes:	jakarta-commons-daemon-javadoc
 
 %description javadoc
 Jakarta Commons Daemon documentation.
