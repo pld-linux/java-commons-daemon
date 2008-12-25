@@ -2,8 +2,8 @@
 %bcond_without	javadoc		# don't build javadoc
 
 %include	/usr/lib/rpm/macros.java
-Summary:	Jakarta Commons Daemon - controlling of Java daemons
-Summary(pl.UTF-8):	Jakarta Commons Daemon - kontrolowanie demonów w Javie
+Summary:	Commons Daemon - controlling of Java daemons
+Summary(pl.UTF-8):	Commons Daemon - kontrolowanie demonów w Javie
 Name:		java-commons-daemon
 Version:	1.0.1
 Release:	4
@@ -41,8 +41,8 @@ aplikacjach oraz natywny kod uniksowy kontrolujący demony w Javie w
 systemie Unix.
 
 %package javadoc
-Summary:	Jakarta Commons Daemon documentation
-Summary(pl.UTF-8):	Dokumentacja do Jakarta Commons Daemon
+Summary:	Commons Daemon documentation
+Summary(pl.UTF-8):	Dokumentacja do Commons Daemon
 Group:		Documentation
 Requires:	jpackage-utils
 Provides:	jakarta-commons-daemon-javadoc
@@ -50,10 +50,10 @@ Obsoletes:	jakarta-commons-daemon-doc
 Obsoletes:	jakarta-commons-daemon-javadoc
 
 %description javadoc
-Jakarta Commons Daemon documentation.
+Commons Daemon documentation.
 
 %description javadoc -l pl.UTF-8
-Dokumentacja do Jakarta Commons Daemon.
+Dokumentacja do Commons Daemon.
 
 %prep
 %setup -qc
