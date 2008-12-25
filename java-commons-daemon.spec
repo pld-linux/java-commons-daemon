@@ -9,7 +9,7 @@ Version:	1.0.1
 Release:	4
 License:	Apache v2.0
 Group:		Libraries/Java
-Source0:	http://www.apache.org/dist/jakarta/commons/daemon/source/daemon-%{version}.tar.gz
+Source0:	http://www.apache.org/dist/commons/daemon/source/daemon-%{version}.tar.gz
 # Source0-md5:	df3eb5aafa53ca530843a09d40b8a1c0
 Patch0:		jakarta-commons-daemon-link.patch
 URL:		http://commons.apache.org/daemon/
