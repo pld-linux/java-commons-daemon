@@ -1,11 +1,5 @@
 # Conditional build:
 %bcond_without	javadoc		# don't build javadoc
-%if "%{pld_release}" == "ti"
-%bcond_without	java_sun	# build with gcj
-%else
-%bcond_with	java_sun	# build with java-sun
-%endif
-
 %include	/usr/lib/rpm/macros.java
 
 %define		srcname	commons-daemon
@@ -22,11 +16,9 @@ Patch0:		jakarta-commons-daemon-link.patch
 URL:		http://commons.apache.org/daemon/
 BuildRequires:	ant >= 1.4.1
 BuildRequires:	automake
-%{!?with_java_sun:BuildRequires:	java-gcj-compat-devel}
-%{?with_java_sun:BuildRequires:	java-sun}
+BuildRequires:	jdk
 BuildRequires:	jpackage-utils
 BuildRequires:	junit >= 3.7
-BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	xmlto >= 0:0.0.18-1
