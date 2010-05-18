@@ -16,6 +16,7 @@ Patch0:		jakarta-commons-daemon-link.patch
 URL:		http://commons.apache.org/daemon/
 BuildRequires:	ant >= 1.4.1
 BuildRequires:	automake
+BuildRequires:	docbook-dtd412-xml
 BuildRequires:	java-junit >= 3.7
 BuildRequires:	jdk
 BuildRequires:	jpackage-utils
