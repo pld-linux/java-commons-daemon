@@ -39,6 +39,20 @@ zbiór interfejsów w Javie, które muszą być zaimplementowane w
 aplikacjach oraz natywny kod uniksowy kontrolujący demony w Javie w
 systemie Unix.
 
+%package -n jsvc
+Summary:	Commons Daemon jsvc utility
+Summary(pl.UTF-8):	Narzędzie jsvc Commons Daemon
+Group:		Applications
+Requires:	%{name} = %{version}-%{release}
+
+%description -n jsvc
+Jsvc is a set of libraries and applications for making Java
+applications run on UNIX more easily.
+
+%description -n jsvc -l pl.UTF-8
+Jsvc jest zestawem bibliotek i aplikacji które ułatwiają uruchamianie
+aplikacji Javy.
+
 %package javadoc
 Summary:	Commons Daemon documentation
 Summary(pl.UTF-8):	Dokumentacja do Commons Daemon
@@ -104,6 +118,11 @@ ln -nfs %{srcname}-%{version} %{_javadocdir}/%{srcname}
 %attr(755,root,root) %{_bindir}/jsvc
 %{_mandir}/man1/jsvc.1*
 %{_javadir}/*.jar
+
+%files -n jsvc
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/jsvc
+%{_mandir}/man1/jsvc.1*
 
 %if %{with javadoc}
 %files javadoc
