@@ -70,6 +70,8 @@ Dokumentacja do Commons Daemon.
 %prep
 %setup -q -n %{srcname}-%{version}-src
 
+find -name '*.o' -o -name '*.a' | xargs rm
+
 %patch0 -p1
 
 %build
