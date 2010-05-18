@@ -1,11 +1,11 @@
---- daemon-1.0.1/src/native/unix/native/Makefile.in.orig	2005-04-18 04:32:38.000000000 +0200
-+++ daemon-1.0.1/src/native/unix/native/Makefile.in	2007-08-25 19:30:50.624383935 +0200
-@@ -36,7 +36,7 @@
+--- commons-daemon-1.0.2-src/src/native/unix/native/Makefile.in.orig	2010-02-13 17:58:21.000000000 +0100
++++ commons-daemon-1.0.2-src/src/native/unix/native/Makefile.in	2010-05-19 00:10:44.000000000 +0200
+@@ -38,7 +38,7 @@
  	$(RANLIB) libservice.a
  
  jsvc: jsvc-unix.o libservice.a
--	$(LDCMD) $(LDFLAGS) jsvc-unix.o libservice.a -o ../jsvc
-+	$(LDCMD) jsvc-unix.o libservice.a $(LDFLAGS) -o ../jsvc
+-	$(LDCMD) $(LDFLAGS) jsvc-unix.o libservice.a $(LIBS) -o ../jsvc
++	$(LDCMD) jsvc-unix.o libservice.a $(LIBS) $(LDFLAGS) -o ../jsvc
  
  clean:
  	rm -f $(OBJS) ../jsvc jsvc-unix.o libservice.a

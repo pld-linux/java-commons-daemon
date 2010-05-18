@@ -54,8 +54,8 @@ Commons Daemon documentation.
 Dokumentacja do Commons Daemon.
 
 %prep
-%setup -qc
-mv daemon-%{version}/* .
+%setup -q -n %{srcname}-%{version}-src
+
 %patch0 -p1
 
 %build
