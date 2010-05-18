@@ -78,7 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_javadir}
 
 # jars
-cp -a dist/%{srcname}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-%{version}.jar
+cp -a dist/%{srcname}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-%{version}.jar
 ln -s %{srcname}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}.jar
 
 # javadoc
@@ -100,7 +100,7 @@ ln -nfs %{srcname}-%{version} %{_javadocdir}/%{srcname}
 
 %files
 %defattr(644,root,root,755)
-%doc PROPOSAL.html RELEASE-NOTES.txt STATUS.html
+%doc PROPOSAL.html RELEASE-NOTES.txt README
 %attr(755,root,root) %{_bindir}/jsvc
 %{_mandir}/man1/jsvc.1*
 %{_javadir}/*.jar
