@@ -115,8 +115,6 @@ ln -nfs %{srcname}-%{version} %{_javadocdir}/%{srcname}
 %files
 %defattr(644,root,root,755)
 %doc PROPOSAL.html RELEASE-NOTES.txt README
-%attr(755,root,root) %{_bindir}/jsvc
-%{_mandir}/man1/jsvc.1*
 %{_javadir}/*.jar
 
 %files -n jsvc
