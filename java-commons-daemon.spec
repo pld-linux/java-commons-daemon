@@ -6,26 +6,25 @@
 Summary:	Commons Daemon - controlling of Java daemons
 Summary(pl.UTF-8):	Commons Daemon - kontrolowanie demonów w Javie
 Name:		java-commons-daemon
-Version:	1.0.1
-Release:	5
+Version:	1.0.2
+Release:	1
 License:	Apache v2.0
 Group:		Libraries/Java
-Source0:	http://www.apache.org/dist/commons/daemon/source/daemon-%{version}.tar.gz
-# Source0-md5:	df3eb5aafa53ca530843a09d40b8a1c0
+Source0:	http://www.apache.net.pl/commons/daemon/source/commons-daemon-%{version}-src.tar.gz
+# Source0-md5:	a6c68eed204bc9f1ef3b77488edfcfeb
 Patch0:		jakarta-commons-daemon-link.patch
 URL:		http://commons.apache.org/daemon/
 BuildRequires:	ant >= 1.4.1
 BuildRequires:	automake
+BuildRequires:	java-junit >= 3.7
 BuildRequires:	jdk
 BuildRequires:	jpackage-utils
-BuildRequires:	junit >= 3.7
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	xmlto >= 0:0.0.18-1
 Requires:	java-commons-collections >= 2.0
 Requires:	java-commons-logging >= 1.0
 Requires:	jpackage-utils
-Provides:	jakarta-commons-daemon
 Obsoletes:	jakarta-commons-daemon
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -45,7 +44,6 @@ Summary:	Commons Daemon documentation
 Summary(pl.UTF-8):	Dokumentacja do Commons Daemon
 Group:		Documentation
 Requires:	jpackage-utils
-Provides:	jakarta-commons-daemon-javadoc
 Obsoletes:	jakarta-commons-daemon-doc
 Obsoletes:	jakarta-commons-daemon-javadoc
 
