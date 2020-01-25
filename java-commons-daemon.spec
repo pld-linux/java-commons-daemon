@@ -1,6 +1,5 @@
 # Conditional build:
 %bcond_without	javadoc		# don't build javadoc
-%include	/usr/lib/rpm/macros.java
 
 %define		srcname	commons-daemon
 Summary:	Commons Daemon - controlling of Java daemons
