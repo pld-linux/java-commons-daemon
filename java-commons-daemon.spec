@@ -11,7 +11,7 @@ License:	Apache v2.0
 Group:		Libraries/Java
 # -Source0:       http://www.apache.org/dist/commons/daemon/source/commons-daemon-%{version}-src.tar.gz
 Source0:	https://archive.apache.org/dist/commons/daemon/source/commons-daemon-%{version}-src.tar.gz
-# Source0-md5:	fe4ae0473feaa03baf266d17ec4acbc1
+# Source0-md5:	e5a08e844412147a61a7ef9a19f39978
 URL:		http://commons.apache.org/daemon/
 BuildRequires:	ant >= 1.4.1
 BuildRequires:	automake
