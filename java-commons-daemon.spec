@@ -6,12 +6,13 @@ Summary:	Commons Daemon - controlling of Java daemons
 Summary(pl.UTF-8):	Commons Daemon - kontrolowanie demonów w Javie
 Name:		java-commons-daemon
 Version:	1.1.0
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Libraries/Java
 # -Source0:       http://www.apache.org/dist/commons/daemon/source/commons-daemon-%{version}-src.tar.gz
 Source0:	https://archive.apache.org/dist/commons/daemon/source/commons-daemon-%{version}-src.tar.gz
 # Source0-md5:	e5a08e844412147a61a7ef9a19f39978
+Patch0:		build.patch
 URL:		http://commons.apache.org/daemon/
 BuildRequires:	ant >= 1.4.1
 BuildRequires:	automake
@@ -69,6 +70,7 @@ Dokumentacja do Commons Daemon.
 
 %prep
 %setup -q -n %{srcname}-%{version}-src
+%patch0 -p1
 
 %build
 # Java part

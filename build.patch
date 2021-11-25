@@ -1,0 +1,16 @@
+diff -urN commons-daemon-1.1.0-src.org/build.xml commons-daemon-1.1.0-src/build.xml
+--- commons-daemon-1.1.0-src.org/build.xml	2017-07-08 04:37:29.000000000 +0200
++++ commons-daemon-1.1.0-src/build.xml	2021-11-25 06:57:27.769976730 +0100
+@@ -93,10 +93,10 @@
+ 
+ 
+   <!-- compiler source JDK version -->
+-  <property name="compile.source"          value="1.5"/>
++  <property name="compile.source"          value="1.6"/>
+ 
+   <!-- compiler target JDK version -->
+-  <property name="compile.target"          value="1.5"/>
++  <property name="compile.target"          value="1.6"/>
+ 
+   <!-- Should Java compilations set the 'debug' compiler option? -->
+   <property name="compile.debug"           value="true"/>
