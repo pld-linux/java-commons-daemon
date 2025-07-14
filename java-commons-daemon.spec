@@ -70,7 +70,7 @@ Dokumentacja do Commons Daemon.
 
 %prep
 %setup -q -n %{srcname}-%{version}-src
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 # Java part
