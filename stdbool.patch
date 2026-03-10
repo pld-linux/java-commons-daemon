@@ -1,0 +1,19 @@
+# Use standard stdbool.h unconditionally instead of custom bool enum.
+# C23 makes bool/true/false keywords, so the custom enum no longer compiles.
+--- a/src/native/unix/native/jsvc.h.orig	2025-12-11 13:00:00.000000000 +0100
++++ b/src/native/unix/native/jsvc.h	2026-03-10 18:30:21.729984242 +0100
+@@ -25,14 +25,7 @@
+ #include <sys/stat.h>
+
+ /* Definitions for booleans */
+-#ifdef OS_DARWIN
+ #include <stdbool.h>
+-#else
+-typedef enum {
+-    false,
+-    true
+-} bool;
+-#endif
+
+ #include "version.h"
+ #include "debug.h"

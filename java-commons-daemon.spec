@@ -5,26 +5,26 @@
 Summary:	Commons Daemon - controlling of Java daemons
 Summary(pl.UTF-8):	Commons Daemon - kontrolowanie demonów w Javie
 Name:		java-commons-daemon
-Version:	1.1.0
-Release:	2
+Version:	1.5.1
+Release:	1
 License:	Apache v2.0
 Group:		Libraries/Java
 # -Source0:       http://www.apache.org/dist/commons/daemon/source/commons-daemon-%{version}-src.tar.gz
 Source0:	https://archive.apache.org/dist/commons/daemon/source/commons-daemon-%{version}-src.tar.gz
-# Source0-md5:	e5a08e844412147a61a7ef9a19f39978
-Patch0:		build.patch
-URL:		http://commons.apache.org/daemon/
+# Source0-md5:	43b2264d372280389f8997e7ee3d4c01
+# Ant build file for building without Maven
+Source1:	build.xml
+Patch0:		stdbool.patch
+URL:		https://commons.apache.org/proper/commons-daemon/
 BuildRequires:	ant >= 1.4.1
+BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	java-junit >= 3.7
 BuildRequires:	jdk
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	xmlto >= 0:0.0.18-1
-Requires:	java-commons-collections >= 2.0
-Requires:	java-commons-logging >= 1.0
 Requires:	jpackage-utils
 Obsoletes:	jakarta-commons-daemon
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -71,12 +71,10 @@ Dokumentacja do Commons Daemon.
 %prep
 %setup -q -n %{srcname}-%{version}-src
 %patch -P0 -p1
+cp -a %{SOURCE1} .
 
 %build
 # Java part
-required_jars="junit"
-CLASSPATH=$(build-classpath $required_jars)
-export CLASSPATH
 %ant jar %{?with_javadoc:javadoc}
 
 # native part
@@ -114,7 +112,7 @@ ln -nfs %{srcname}-%{version} %{_javadocdir}/%{srcname}
 
 %files
 %defattr(644,root,root,755)
-%doc PROPOSAL.html RELEASE-NOTES.txt README
+%doc PROPOSAL.html RELEASE-NOTES.txt README.md
 %{_javadir}/*.jar
 
 %files -n jsvc

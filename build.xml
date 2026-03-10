@@ -1,0 +1,65 @@
+<project name="Daemon" default="jar" basedir=".">
+
+  <property name="component.name"    value="daemon"/>
+  <property name="component.version" value="1.5.1"/>
+
+  <property name="build.home"   value="target"/>
+  <property name="dist.home"    value="dist"/>
+  <property name="source.home"  value="src/main/java"/>
+
+  <property name="compile.source" value="1.8"/>
+  <property name="compile.target" value="1.8"/>
+
+  <path id="compile.classpath">
+    <pathelement location="${build.home}/classes"/>
+  </path>
+
+  <target name="compile">
+    <mkdir dir="${build.home}/classes"/>
+    <javac srcdir="${source.home}"
+           destdir="${build.home}/classes"
+           debug="true"
+           source="${compile.source}"
+           target="${compile.target}"
+           deprecation="true"
+           includeantruntime="false">
+      <classpath refid="compile.classpath"/>
+    </javac>
+  </target>
+
+  <target name="jar" depends="compile">
+    <mkdir dir="${dist.home}"/>
+    <mkdir dir="${build.home}/classes/META-INF"/>
+    <copy file="LICENSE.txt" tofile="${build.home}/classes/META-INF/LICENSE.txt"/>
+    <copy file="NOTICE.txt" tofile="${build.home}/classes/META-INF/NOTICE.txt"/>
+    <jar jarfile="${dist.home}/commons-${component.name}-${component.version}.jar">
+      <manifest>
+        <attribute name="Specification-Title" value="Commons Daemon"/>
+        <attribute name="Specification-Version" value="${component.version}"/>
+        <attribute name="Specification-Vendor" value="Apache Software Foundation"/>
+        <attribute name="Implementation-Title" value="Commons Daemon"/>
+        <attribute name="Implementation-Version" value="${component.version}"/>
+        <attribute name="Implementation-Vendor" value="Apache Software Foundation"/>
+      </manifest>
+      <fileset dir="${build.home}/classes">
+        <include name="org/apache/commons/daemon/**"/>
+        <include name="META-INF/LICENSE.txt"/>
+        <include name="META-INF/NOTICE.txt"/>
+      </fileset>
+    </jar>
+  </target>
+
+  <target name="javadoc" depends="compile">
+    <mkdir dir="${dist.home}/docs/api"/>
+    <javadoc sourcepath="${source.home}"
+             destdir="${dist.home}/docs/api"
+             packagenames="org.apache.commons.*"
+             author="true"
+             version="true"
+             doctitle="&lt;h1&gt;Java Daemons&lt;/h1&gt;"
+             windowtitle="Java Daemons (Version ${component.version})">
+      <classpath refid="compile.classpath"/>
+    </javadoc>
+  </target>
+
+</project>
