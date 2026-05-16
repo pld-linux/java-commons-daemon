@@ -1,0 +1,34 @@
+jsvc: open pidfile O_RDWR so lockf(F_LOCK) can take an exclusive lock
+
+lockf(F_LOCK, ...) acquires an exclusive (write) lock; on Linux glibc the
+fcntl backend rejects it with EBADF when the underlying fd was opened
+O_RDONLY. wait_child() and get_pidf() open the pidfile read-only and then
+call lockf(F_LOCK), which always fails with errno 9 ("Bad file descriptor")
+on Linux. The lockf return value was ignored prior to 1.5.x; 1.5.1 started
+checking it, so the long-standing bug now aborts startup ("wait_child:
+Failed to lock PID file ... due to [9]").
+
+Open the pidfile O_RDWR in both call sites so the exclusive lock request
+matches the open mode. Both callers run as root in the jsvc parent
+process, so RDWR access is granted.
+
+--- commons-daemon-1.5.1-src/src/native/unix/native/jsvc-unix.c.orig
++++ commons-daemon-1.5.1-src/src/native/unix/native/jsvc-unix.c
+@@ -673,7 +673,7 @@
+     int i;
+     char buff[80];
+
+-    fd = open(args->pidf, O_RDONLY, 0);
++    fd = open(args->pidf, O_RDWR, 0);
+     if (!quiet)
+         log_debug("get_pidf: %d in %s", fd, args->pidf);
+     if (fd < 0) {
+@@ -778,7 +778,7 @@
+         }
+
+         /* check if the pid file process exists */
+-        fd = open(args->pidf, O_RDONLY);
++        fd = open(args->pidf, O_RDWR);
+         if (fd < 0 && havejvm) {
+             /* something has gone wrong the JVM has stopped */
+             return 1;
